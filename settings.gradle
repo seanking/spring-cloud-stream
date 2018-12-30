@@ -1,2 +1,2 @@
 rootProject.name = 'spring-cloud-stream'
-
+include 'spring-cloud-stream-model'
