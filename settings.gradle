@@ -1,3 +1,5 @@
 rootProject.name = 'spring-cloud-stream'
 include 'spring-cloud-stream-model'
 include 'spring-cloud-stream-producer'
+include 'spring-cloud-stream-consumer'
+
