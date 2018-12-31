@@ -45,11 +45,11 @@ public class SimpleMessageSourceTest {
         uut.publishSimpleMessage(message);
 
         // Then
-        final String expectedMessage = marshal(message);
+        final String expectedMessage = convertToJSON(message);
         assertThat(messages, receivesPayloadThat(is(expectedMessage)));
     }
 
-    private String marshal(final SimpleMessage message) throws Exception {
+    private String convertToJSON(final SimpleMessage message) throws Exception {
         return new ObjectMapper().writeValueAsString(message);
     }
 }
