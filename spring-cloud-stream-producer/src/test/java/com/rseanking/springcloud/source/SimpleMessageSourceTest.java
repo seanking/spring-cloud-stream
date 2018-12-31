@@ -1,6 +1,5 @@
 package com.rseanking.springcloud.source;
 
-import static java.lang.String.format;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 
@@ -17,6 +16,7 @@ import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.messaging.Message;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rseanking.springcloud.SimpleMessage;
 
 @RunWith(SpringRunner.class)
@@ -45,8 +45,12 @@ public class SimpleMessageSourceTest {
         uut.publishSimpleMessage(message);
 
         // Then
-        final String expectedMessage = format("{\"time\":%s,\"message\":\"%s\"}",
-                message.getTime().getTime(), message.getMessage());
+        final String expectedMessage = marshal(message);
         MatcherAssert.assertThat(messages, receivesPayloadThat(is(expectedMessage)));
+    }
+
+    private String marshal(SimpleMessage message) throws Exception {
+        final ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(message);
     }
 }
