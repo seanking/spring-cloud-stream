@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven'
 }
 
 group 'com.rseanking'
@@ -10,6 +11,8 @@ repositories {
 }
 
 dependencies {
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':spring-cloud-stream-model')
+    compile('org.springframework.cloud:spring-cloud-stream:2.0.2.RELEASE')
+    compile('org.springframework.cloud:spring-cloud-starter-stream-kafka:2.0.2.RELEASE')
+    testCompile('org.springframework.cloud:spring-cloud-stream-test-support:2.0.2.RELEASE')
 }
