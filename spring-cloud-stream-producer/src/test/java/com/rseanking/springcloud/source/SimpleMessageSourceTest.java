@@ -39,7 +39,7 @@ public class SimpleMessageSourceTest {
         message.setMessage("test-message");
         message.setTime(new Date());
 
-        BlockingQueue<Message<?>> messages = collector.forChannel(source.output());
+        final BlockingQueue<Message<?>> messages = collector.forChannel(source.output());
 
         // When
         uut.publishSimpleMessage(message);
