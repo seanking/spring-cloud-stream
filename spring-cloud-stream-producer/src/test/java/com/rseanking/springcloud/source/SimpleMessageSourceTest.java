@@ -3,10 +3,10 @@ package com.rseanking.springcloud.source;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 import static org.springframework.cloud.stream.test.matcher.MessageQueueMatcher.receivesPayloadThat;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class SimpleMessageSourceTest {
 
         // Then
         final String expectedMessage = marshal(message);
-        MatcherAssert.assertThat(messages, receivesPayloadThat(is(expectedMessage)));
+        assertThat(messages, receivesPayloadThat(is(expectedMessage)));
     }
 
     private String marshal(SimpleMessage message) throws Exception {
