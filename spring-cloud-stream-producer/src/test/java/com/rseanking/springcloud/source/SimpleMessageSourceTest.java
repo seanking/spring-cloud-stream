@@ -49,8 +49,7 @@ public class SimpleMessageSourceTest {
         assertThat(messages, receivesPayloadThat(is(expectedMessage)));
     }
 
-    private String marshal(SimpleMessage message) throws Exception {
-        final ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(message);
+    private String marshal(final SimpleMessage message) throws Exception {
+        return new ObjectMapper().writeValueAsString(message);
     }
 }
