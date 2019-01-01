@@ -13,6 +13,7 @@ repositories {
 dependencies {
     compile project(':spring-cloud-stream-model')
     compile('org.springframework.cloud:spring-cloud-stream:2.0.2.RELEASE')
-    compile('org.springframework.cloud:spring-cloud-starter-stream-kafka:2.0.2.RELEASE')
+    compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit:2.0.2.RELEASE')
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.8")
     testCompile('org.springframework.cloud:spring-cloud-stream-test-support:2.0.2.RELEASE')
 }
