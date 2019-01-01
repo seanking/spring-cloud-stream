@@ -1,16 +1,18 @@
 package com.rseanking.springcloud;
 
-import java.util.Date;
+import java.time.LocalTime;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SimpleMessage {
-    private Date time;
+    private LocalTime time;
     private String message;
 
-    public Date getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -20,5 +22,13 @@ public class SimpleMessage {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("time", time)
+                .append("message", message)
+                .toString();
     }
 }
