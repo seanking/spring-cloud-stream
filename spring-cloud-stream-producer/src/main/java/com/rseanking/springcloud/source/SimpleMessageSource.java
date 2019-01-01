@@ -1,22 +1,25 @@
 package com.rseanking.springcloud.source;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 import com.rseanking.springcloud.SimpleMessage;
 
 @Component
+@EnableBinding(Source.class)
 public class SimpleMessageSource {
-    private Source source;
+    private MessageChannel output;
 
     @Autowired
-    public SimpleMessageSource(Source source) {
-        this.source = source;
+    public SimpleMessageSource(MessageChannel output) {
+        this.output = output;
     }
 
     public void publishSimpleMessage(final SimpleMessage message) {
-        source.output().send(MessageBuilder.withPayload(message).build());
+        output.send(MessageBuilder.withPayload(message).build());
     }
 }
